@@ -1,0 +1,24 @@
+* <property name="format" value="%s, 안녕하세요!" />
+에서 "format" 은 setFormat (setter)을 뜻하므로 이름 규칙 주의
+
+
+* 싱글톤 패턴
+- 스프링은 별도로 설정하지 않으면 하나의 Bean객체만 생성
+- 하나의 객체만을 생성하고 이후 사용하게 되면 참조만을 반환하게됨(추가적인 객체 생성X)
+- 한번 생성된 객체는 여러 번 참조될 수 있지만 동시에 여러번 참조될 수는 없다.
+
+* <bean id="greeter" class="sample.Greeter2">
+	<property name="format" value="%s, 안녕하세요!" />
+  </bean>
+에서 id 는 class 에 대한 객체 (Greeter greeter = new Greeter( ) 와 동일)
+
+
+* 추가)
+- hashCode 
+- equals( ) 
+- toString( )  알아보기
+
+-> 사전지식
+- hashCode : 클래스 객체의 주소값으로 해시 코드를 생성 
+- equals( )  
+- toString() : 객체가 가지고 있는 정보나 값들을 문자열로 만들어 리턴하는 메소드
