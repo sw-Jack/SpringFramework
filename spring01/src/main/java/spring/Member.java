@@ -48,6 +48,16 @@ public class Member {
 		this.registerDate = registerDate;
 	}
 	
+	// 암호 변경 기능
+	public void changePassword(String oldPassword, String newPassword) {
+		if(!password.equals(oldPassword)) {
+			// 예외 발생 처리
+			throw new IdPasswordNotMatchingException();
+		} 
+		this.password = newPassword;
+	}
+
+	
 	// 객체 설명을 반환 용도
 	@Override
 	public String toString() {

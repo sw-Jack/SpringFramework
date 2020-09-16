@@ -22,6 +22,9 @@ public class MemberDao {
 	} 
 	
 	// 수정 (비밀번호 수정)
+	public void update(Member member) {
+		map.put(member.getEmail(), member);
+	}
 	
 	// 삭제 (탈퇴)
 	
