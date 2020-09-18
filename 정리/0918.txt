@@ -1,0 +1,72 @@
+* 의존 자동 주입
+- annotation 사용
+1) @Autowired
+ - 필드나 메서드에 적용하면 의존 객체를 자동으로 주입한다.
+ - 자동 주입 대상에 @Autowired 어노테이션 추가
+ - XML 설정 파일에 <context:annotation-config/> 추가
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd">
+
+ - @Autowired 동작 순서
+	- 타입이 같은 빈 객체를 검색
+		- 타입이 같은 bean 객체가 하나면 그 객체를 사용
+		- @Qualifier가 정의되어 있다면 해당 값을 갖는 bean 객체
+	- 타입이 같은 bean 객체가 두개 이상 존재하면
+		- @Qualifier로 지정한 bean 객체를 찾아 주입한다.
+		- @Qualifier로 지정된 객체가 없다면 이름이 같은 bean 객체를 찾는다
+	- 나머지 경우는 예외 발생
+
+
+
+2) @Qualifier
+ - 자동 의존 주입 시 사용할 객체를 선택할 수 있도록 하는 기능
+ - 이름이 같은 객체가 두개 이상 존재할 때
+ - XML 설정 파일에 <qualifier value="name"/>
+ - @Autowired
+   @Qualifier("name")와 주입을 필요로 하는 부분에 추가
+
+
+
+3) @Resource 
+ - Resource 어노테이션은 bean 이름을 검색하여 자동 주입
+ - 자동 주입 대상에 @Resource 어노테이션 사용
+ - 스프링 설정 파일에 <context:annotation-config/> 태그 추가
+ - @Resource는 생성자에 적용할 수 없다.
+ - name 속성을 생략하면 동일한 타입의 bean 객체를 찾는다.
+ - @Resource 동작 순서
+	- name 속성에 지정한 bean 객체를 찾는다. 있다면 해당 객체를 주입한다.
+	- name 속성이 없다면 
+		- 동일한 타입의 bean 객체를 찾는다. 있다면 해당 객체를 주입
+	- 동일한 타입의 객체가 두개 이상일 경우
+		- 같은 이름의 bean 객체를 찾는다.
+		- 없다면 @Qualifier를 이용하여 주입할  bean 객체를 찾는다.
+
+
+
+* 자동 의존 주입보다 명시적 의존 주입이 우선된다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
