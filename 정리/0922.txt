@@ -1,0 +1,8 @@
+* Context != Container
+* Context 객체 생성 -> 컨테이너 생성 -> 컨테이너로 모든 관리 (Bean 객체 생성, 의존 주입 및 의존 객체 초기화)
+
+* Bean 객체의 life-cycle
+1) 객체 생성 2) 의존 설정 3) 초기화 4) 소멸
+
+* AOP 기본 구조
+* Proxy 패턴
