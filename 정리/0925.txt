@@ -1,0 +1,37 @@
+* Cache
+- 한번 불린 정보는 따로 저장해놓고 다시 불릴 시에 재탐색하지 않고 따로 저장해놓은 
+데이터를재사용
+
+
+
+
+* Oracle DB와의 연동을 위한 pom.xml 파일 의존 추가
+<!-- ****** Oracle DB 연동을 위하 pom.xml 파일 설정 ****** -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.1.0.RELEASE</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.2.1</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
+<!-- ****** Oracle DB 연동을 위하 pom.xml 파일 설정 ****** -->
+
+
+* ojdbc6-11.2.0.3.jar 삽입 경로
+=> C:\Users:각자계정\.m2\repository\oracle\ojdbc6\11.2.0.3
