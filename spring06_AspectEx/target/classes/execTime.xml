@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:aop="http://www.springframework.org/schema/aop"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd
+  http://www.springframework.org/schema/aop
+  http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<aop:aspectj-autoproxy/>
+   
+	<bean id="execTimeAspect" class="ex_spring06.ExecTimeAspect"/>
+	<bean id="cacheAspect" class="ex_spring06.CacheAspect"/>
+	<bean id="implCal" class="ex_spring06.ImplCalculator"/>
+    <bean id="recCal" class="ex_spring06.RecCalculator"/>
+
+
+</beans>
+
+
+
+
+
+
+
+
+
