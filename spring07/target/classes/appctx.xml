@@ -5,5 +5,20 @@
  xsi:schemaLocation="http://www.springframework.org/schema/beans
   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
+   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+      destroy-method="close">
+      <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+      <property name="user" value="springuser"/>
+      <property name="password" value="springuser"/>
+      
+      <!-- 개발 실무에서 효율성 테스트를 위한 추가 옵션 -->
+      <property name="maxPoolSize" value="100"/>
+      <property name="maxIdleTime" value="600"/>
+      <property name="idleConnectionTestPeriod" value="300"/>
+   </bean>
+   
+   <bean id="memberDao" class="spring.MemberDao">
+      <constructor-arg ref="dataSource"/>
+   </bean>
 </beans>
