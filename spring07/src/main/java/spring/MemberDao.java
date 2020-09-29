@@ -83,16 +83,38 @@ public class MemberDao {
    
    //수정(비밀번호 수정)
    public void update(Member member) {
-      jdbcTemplate.update(
-    		  "update member set name = ?, password = ? where email = ?",
-    		  member.getName(),member.getPassword(),member.getEmail());
-   }
-   
+         jdbcTemplate.update(
+    		  "update member set name = ?, password=? where email=?",
+    		  member.getName(),member.getPassword(),member.getEmail()); 
+
+	}
+      
    
    //삭제(탈퇴)
+   // 이메일 정보와 비밀번호 정보를 DB에 저장되어 있는 내용과 비교해서 같으면 멤버 삭제
+   public void delete(Member member) {
+	   delete(member.getEmail(), member.getPassword());
+   }
+   public void delete(String email, String password) {
+	   /*jdbcTemplate.update(
+			   "delete from member where email=? and password=?",
+			   member.getEmail(), member.getPassword());*/
+	      System.out.println("회원 삭제");
+	      Member curtMember = selectByEmail(email);
+	      if(curtMember == null)
+	         System.out.println("회원 정보 없음");
+	      else if(curtMember.getPassword().equals(password))
+	         jdbcTemplate.update("delete from \"MEMBER\" where \"ID\"=?",curtMember.getId());
+	      else
+	         System.out.println("비밀번호가 맞지 않음");
+   }
    
-   
-   
+   public void update2(Member member) {
+	   System.out.println("이름변경");
+       jdbcTemplate.update(
+  		  "update member set name = ?, password=? where email=?",
+  		  member.getName() + "a", member.getPassword(),member.getEmail()); 
+   }
    
    //전체 조회
    // 중복 코드 처리 전

@@ -2,23 +2,67 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:tx="http://www.springframework.org/schema/tx"
  xsi:schemaLocation="http://www.springframework.org/schema/beans
-  http://www.springframework.org/schema/beans/spring-beans.xsd">
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/tx
+  http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-      destroy-method="close">
-      <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
-      <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-      <property name="user" value="springuser"/>
-      <property name="password" value="springuser"/>
-      
-      <!-- 개발 실무에서 효율성 테스트를 위한 추가 옵션 -->
-      <property name="maxPoolSize" value="100"/>
-      <property name="maxIdleTime" value="600"/>
-      <property name="idleConnectionTestPeriod" value="300"/>
-   </bean>
-   
-   <bean id="memberDao" class="spring.MemberDao">
-      <constructor-arg ref="dataSource"/>
-   </bean>
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="user" value="springuser"/>
+		<property name="password" value="springuser"/>
+		<property name="maxPoolSize" value="100"/>
+		<property name="maxIdleTime" value="600"/>
+		<property name="idleConnectionTestPeriod" value="300"/>
+	</bean>
+	
+	<bean id="memberDao" class="spring.MemberDao">
+		<constructor-arg ref="dataSource"/>
+	</bean>
+		
+	<bean id="changePwdSvc" class="spring.ChangePasswordService">
+		<constructor-arg ref="memberDao"/>
+	</bean>
+	
+	<bean id="transactionManager" 
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="memberRegSvc" class="spring.MemberRegisterService">
+		<constructor-arg ref="memberDao"/>
+	</bean>
+	
+	<bean id="memberPrinter" class="spring.MemberPrinter"></bean>
+	
+	<bean id="memberListPrinter" class="spring.MemberListPrinter">
+		<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="memberPrinter"/>
+	</bean>
+	
+	<bean id="memberInfoPrinter" class="spring.MemberInfoPrinter">
+		<property name="memberDao" ref="memberDao"/>
+		<property name="memberPrinter" ref="memberPrinter"></property>
+	</bean>
+	
+	<bean id="versionPrinter" class="spring.VersionPrinter">
+		<property name="majorVersion" value="4"/>
+		<property name="minorVersion" value="2"/>
+	</bean>
+	
+	<bean id="memberDelSvc" class="spring.MemberDeleteService">
+		<constructor-arg ref="memberDao"/>
+	</bean>
 </beans>
+
+
+
+
+
+
+
