@@ -1,0 +1,60 @@
+# Spring MVC
+
+* MVC 패턴 : Model / View / Controller
+ - Model : 서브 시스템의 핵심 기능과 데이터를 보관
+ - View : 사용자(Web Browser)에게 정보를 표시
+ - Controller : 사용자로(Web Browser)부터 받은 입력을 처리
+ - 동작의 순서 : controller -> model -> view 로 이해
+
+
+* DispatcherServlet
+ - 중앙에서 모든 연결을 담당
+  1) 웹 브라우저로부터 요청이 들어옴
+  2) DispatcherServlet 은 요청을 처리할 컨트롤러를 검색한다. (HandlerMapping bean 객체로 검색 요청)
+  3) HandlerMapping 은 클라이언트(웹 브라우저)가 요청한 경로를 확인
+  4) 처리할 컨트롤러 객체를 DispatcherServlet 에게 전달
+  5) DispatcherServlet 객체는 전달받은 컨트롤러 객체의 메서드를 실행하기 위한 HandlerAdapter bean
+     객체에게 요청 처리를 위임 (@Controller 구현한 클래스, HttpRequestServlet 사용 가능)
+  6) HandlerAdapter 는 컨트롤러의 해당 메서드를 실행하여 요청을 처리
+  7) 결과를 DispatcherServlet 에게 ModelAndView 객체로 변환하여 전달
+  8) DispatcherServlet 은 결과를 보여줄 View 를 찾는다. (view-resolvers 사용)
+  9) ViewResolvers 는 ModelAndView 안에 뷰 이름에 해당하는 View 객체를 반환
+  10) DispatcherServlet 은 View 객체에게 응답 결과를 생성하도록 함
+  11) 웹 브라우저로 응답
+
+
+* MVC 실습 준비
+1. Maven 프로젝트 준비
+2. 웹 개발 관련 폴더 생성
+ - main/webapp/WEB-INF/view 까지 폴더 생성
+3. pom.xml 에 웹 개발 관련 설정
+
+	<packaging>war</packaging>
+
+    	<dependencies>
+        	<dependency>
+            	<groupId>javax.servlet.jsp</groupId>
+            	<artifactId>jsp-api</artifactId>
+            	<version>2.2</version>
+        	</dependency>
+        	<dependency>
+            	<groupId>javax.servlet</groupId>
+            	<artifactId>javax.servlet-api</artifactId>
+            	<version>3.0.1</version>
+        	</dependency>
+        	<dependency>
+            	<groupId>org.springframework</groupId>
+            	<artifactId>spring-webmvc</artifactId>
+            	<version>4.1.0.RELEASE</version>
+        	</dependency>
+    	</dependencies>
+
+4. 프로젝트 우클릭 -> Maven -> 프로젝트 업데이트
+5. 프로젝트 우클릭 -> Java EE Tools -> Generate Deployment Descriptor Stub : web.xml 생성
+6. 인코딩 방식 모두 UTF-8로 변환
+7. 프로젝트 톰캣 서버 등록 후 실행 확인
+8. Spring Tools 3 Add-On for Spring Tools 4 설치
+
+
+
+
