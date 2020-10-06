@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/spring-mvc.xml</config>
 		<config>src/main/resources/spring-controller.xml</config>
+		<config>src/main/resources/spring-member.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

@@ -13,7 +13,7 @@ public class HelloController {
 		else return factorial(n-1) * n;
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping("/main")
 	public String main(/* 필요한 매개변수 (스프링이 알아서 자동으로 넣어줌 */) {
 		//처리~DB~등등~비즈니스로직~
 		//model 에 결과값 담기, 담을 거 없으면 빈 채로 
