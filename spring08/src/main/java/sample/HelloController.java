@@ -2,7 +2,9 @@ package sample;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -13,7 +15,7 @@ public class HelloController {
 		else return factorial(n-1) * n;
 	}
 	
-	@RequestMapping("/main")
+	@RequestMapping("/")
 	public String main(/* 필요한 매개변수 (스프링이 알아서 자동으로 넣어줌 */) {
 		//처리~DB~등등~비즈니스로직~
 		//model 에 결과값 담기, 담을 거 없으면 빈 채로 

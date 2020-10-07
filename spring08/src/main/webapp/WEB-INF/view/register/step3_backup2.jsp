@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
+<title>회원 가입</title>
 </head>
 <body>
-메인페이지 입니다.<br>
-<a href="<c:url value='/register/step1'/>">[회원 가입]</a>
+<p><strong>${formData.name}</strong>님 회원 가입을 환영합니다.</p>
+<p><a href="<c:url value='/main'/>">[홈 화면 이동]</a></p>
 </body>
 </html>

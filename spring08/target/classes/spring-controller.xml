@@ -7,4 +7,7 @@
 	<bean class="controller.RegisterController">
 		<property name="memberRegisterService" ref="memberRegSvc"/>
 	</bean>
+	
+	<!-- MainController는 mvc.xml의 <mvc:view-controller path="/main" view-name="main"/> 로 대체  -->
+	<!-- <bean class="controller.MainController"/> -->
 </beans>

@@ -4,12 +4,30 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- MainController의 /main요청에 대한 뷰 응답 처리를 적용한 설정 -->
+	<mvc:view-controller path="/main" view-name="main"/>
+	
 
 	<mvc:annotation-driven/>
+	
 	<mvc:default-servlet-handler/>
+	
 	<mvc:view-resolvers>
 		<mvc:jsp 
-		prefix="/WEB-INF/view/" 
-		suffix=".jsp"	/>
+		prefix="/WEB-INF/view/"
+		suffix=".jsp"/>
 	</mvc:view-resolvers>
+	
+	<!-- id는 무조건 messageSource로 작성! -->
+	<bean id="messageSource"
+	class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>message.label</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="utf-8"/>
+	</bean>
+
 </beans>
