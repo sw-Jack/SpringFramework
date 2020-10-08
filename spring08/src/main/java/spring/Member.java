@@ -48,6 +48,10 @@ public class Member {
 		this.registerDate = registerDate;
 	}
 	
+	public boolean matchPassword(String pwd) {
+		return this.password.equals(pwd);
+	}
+	
 	// 암호 변경 기능
 	public void changePassword(String oldPassword, String newPassword) {
 		if(!password.equals(oldPassword)) {

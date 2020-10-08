@@ -10,4 +10,12 @@
 	
 	<!-- MainController는 mvc.xml의 <mvc:view-controller path="/main" view-name="main"/> 로 대체  -->
 	<!-- <bean class="controller.MainController"/> -->
+	
+	<bean class="controller.LoginController">
+		<property name="authService" ref="authService"/>
+	</bean>
+	
+	<bean class="controller.LogoutController"/>
+
+	
 </beans>

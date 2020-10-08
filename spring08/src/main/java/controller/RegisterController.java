@@ -46,12 +46,13 @@ public class RegisterController {
 	//커맨드 객체 활용
 	@RequestMapping(value="/register/step3", method=RequestMethod.POST)
 	public String handleStep3(@ModelAttribute("formData") RegisterRequest regReq,
-			Errors errors/*에러를 담기 위한 객체*/) {
+			Errors errors/*에러를 담기 위한 객체(errors)는 반드시 커맨드 객체 선언(regReq)
+			 바로 뒤에 위치(규칙임)*/) {
 
 		//커맨드 객체 검증 요청
 		new RegisterRequestValidator().validate(regReq, errors);
 		if(errors.hasErrors()) {
-			System.out.println("이메일 문제있음");
+			// System.out.println("이메일 문제있음");
 			return "register/step2";
 		}
 		
@@ -65,6 +66,7 @@ public class RegisterController {
 			memberRegSvc.regist(regReq);
 			return "register/step3";
 		}catch(AlreadyExistingMemberException e) {
+			errors.rejectValue("email", "duplicate");
 			return "register/step2";
 		}
 	}
