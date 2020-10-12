@@ -16,6 +16,10 @@
 	</bean>
 	
 	<bean class="controller.LogoutController"/>
-
 	
+	<bean class="controller.ChangePwdController">
+		<property name="changePasswordService" ref="memberPwdsvc"/>
+	</bean>
+		
+	<bean class="controller.EditHelpController"/>
 </beans>

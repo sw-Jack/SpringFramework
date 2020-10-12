@@ -30,4 +30,19 @@
 		<property name="defaultEncoding" value="utf-8"/>
 	</bean>
 
+
+	<!--  
+		인터셉터 설정 (Ant 패턴)
+		* : 0개 이상의 문자
+		? : 문자 한개
+		** : 0개 이상의 디렉터리 경로 (All)
+		<mvc:exclude-mapping> : 제외할 경로 지정
+	 -->
+	 <mvc:interceptors>
+	 	<mvc:interceptor>
+	 		<mvc:mapping path="/edit/**"/>
+	 		<mvc:exclude-mapping path="/edit/help/**"/>
+	 		<bean class="spring.AuthCheckInterceptor"/>
+	 	</mvc:interceptor>
+	 </mvc:interceptors>
 </beans>
