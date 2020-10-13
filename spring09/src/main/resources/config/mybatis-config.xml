@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- 마이바티스 동작 관련 설정 -->
+	<settings>
+		<setting name="cacheEnabled" value="false"/>
+		<setting name="useGeneratedKeys" value="false"/>
+		
+		<!-- 자바 이름규칙은 camel을 사용. _를 사용하는 경우 매핑 문제를 해결하기 위한 설정 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="spring.Member" alias="member"/>
+	</typeAliases>
+	
+</configuration>

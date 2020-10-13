@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 설정하고 있는 쿼리들의 대표 이름 memberDao.[id]-->
+<mapper namespace="memberDao">
+
+	<select id="selectByEmail" parameterType="String" resultType="member">
+		select * from MEMBER where email=#{email}
+	</select>
+	
+	<insert id="insert" parameterType="member">
+		insert into MEMBER (ID, EMAIL, PASSWORD, NAME, REGDATE)
+		values (MEMBER_SEQ.nextval, #{email}, #{password}, #{name}, #{regDate})
+		<selectKey keyProperty="id" resultType="Long">
+			select NVL(MAX(id), 0) from MEMBER
+		</selectKey>
+	</insert>
+	
+	<update id="update" parameterType="member">
+		update MEMBER set NAME=#{name}, password=#{password} where email=#{email}
+	</update>
+	
+</mapper>
+
+
+
+
