@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	결과 => ${n1} + ${n2} = ${sum} 
+	${ex1}님 ${ex2}하세요!
 </body>
 </html>

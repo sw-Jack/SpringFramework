@@ -7,7 +7,7 @@ public class Member {
 	private String email;
 	private String password;
 	private String name;
-	private Date regDate;
+	private Date registerDate;
 	
 	public Member() {}	//마이바티스에서는 POJO기반으로 동작하므로 디폴트 생성자가 필요함
 	
@@ -15,11 +15,11 @@ public class Member {
 			String email, 
 			String password, 
 			String name, 
-			Date regDate) {
+			Date registerDate) {
 		this.email = email;
 		this.password = password;
 		this.name = name;
-		this.regDate = regDate;
+		this.registerDate = registerDate;
 	}
 	
 	public Long getId() {
@@ -46,11 +46,11 @@ public class Member {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public Date getRegisterDate() {
+		return registerDate;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setRegisterDate(Date registerDate) {
+		this.registerDate = registerDate;
 	}
 
 	public boolean matchPassword(String pwd) {
@@ -69,7 +69,7 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", registerDate="
-				+ regDate + "]";
+				+ registerDate + "]";
 	}
 	
 	

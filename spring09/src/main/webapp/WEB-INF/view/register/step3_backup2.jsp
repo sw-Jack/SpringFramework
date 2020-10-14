@@ -8,7 +8,8 @@
 <title>회원 가입</title>
 </head>
 <body>
-<p><strong>${formData.name}</strong>님 회원 가입을 환영합니다.</p>
+<%-- <p><strong>${registerRequest.name}</strong>회원 가입을 환영합니다.</p> --%>
+<p><strong>${formData.name}</strong>회원 가입을 환영합니다.</p>
 <p><a href="<c:url value='/main'/>">[홈 화면 이동]</a></p>
 </body>
 </html>

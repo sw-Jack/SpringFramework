@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	결과 => ${n1} + ${n2} = ${sum} 
+	결과 => ${num}! = ${fact} 
 </body>
 </html>

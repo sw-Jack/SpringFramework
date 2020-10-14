@@ -13,33 +13,24 @@
 	<h2><spring:message code="member.info"/></h2>
 	<form:form action="step3" commandName="formData">
 	<p>
-		<label>
-			<spring:message code="email"/>
-			<form:input path="email"/>
-			<!-- errors path가 errors의 필드 -->
-			<form:errors path="email"/>
-		</label>
+		<label><spring:message code="email"/>
+		<form:input path="email"/>
+		<form:errors path="email" element="div"/></label>
 	</p>
 	<p>
-		<label>
-			<spring:message code="name"/>
-			<form:input path="name"/>			
-			<form:errors path="name"/>
-		</label>
+		<label><spring:message code="name"/>
+		<form:input path="name"/>
+		<form:errors path="name"/></label>
 	</p>
 	<p>
-		<label>
-			<spring:message code="password"/>
-			<form:password path="password"/>
-			<form:errors path="password"/>
-		</label>
+		<label><spring:message code="password"/>
+		<form:password path="password"/>
+		<form:errors path="password"/></label>
 	</p>
 	<p>
-		<label>
-			<spring:message code="password.confirm"/>
-			<form:password path="confirmPassword"/>
-			<form:errors path="confirmPassword"/>
-		</label>
+		<label><spring:message code="password.confirm"/>
+		<form:password path="confirmPassword"/>
+		<form:errors path="confirmPassword"/></label>
 	</p>
 	<input type="submit" value="<spring:message code="register.btn"/>">
 	</form:form>
