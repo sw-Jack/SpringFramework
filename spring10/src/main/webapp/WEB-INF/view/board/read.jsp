@@ -13,10 +13,11 @@
 	<tr><th>내용</th><td>${boardVo.content}</td></tr>
 	<tr><th>작성자</th><td>${boardVo.writer}</td></tr>
 	<tr><th>작성일</th><td>${boardVo.regDate}</td></tr>
-	<tr><th>조회수</th><td>${boardVo.cnt}</td></tr>
+	<tr><th>조회수</th><td>${boardVo.readCnt}</td></tr>
 </table>
 <div>
 	<a href="<c:url value="/board/edit/${boardVo.seq}"/>"><button>수정</button></a>
+	<a href="<c:url value="/board/delete/${boardVo.seq}"/>"><button>삭제</button></a>
 	<a href="<c:url value="/board/list"/>"><button>목록</button></a>
 </div>
 </body>

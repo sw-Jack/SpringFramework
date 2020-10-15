@@ -14,13 +14,13 @@ public class BoardDaoImpl implements BoardDao{
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	//public BoardDaoImpl(SqlSessionTemplate sqlSessiomTemplate) {
-	//	this.sqlSessionTemplate = sqlSessiomTemplate;
-	//}
+//	public BoardDaoImpl(SqlSessionTemplate sqlSessionTemplate) {
+//		this.sqlSessionTemplate = sqlSessionTemplate;
+//	}
 	
 	@Override
 	public List<BoardVo> list() {
-		return sqlSessionTemplate.selectList("boardDao.list");
+		return sqlSessionTemplate.selectList("list");
 	}
 
 	@Override
@@ -40,13 +40,12 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public BoardVo select(int seq) {
-		return sqlSessionTemplate.selectOne("select", seq);			
+		return sqlSessionTemplate.selectOne("select", seq);
 	}
 
 	@Override
 	public int updateReadCount(int seq) {
-		return sqlSessionTemplate.update("updateContent", seq);
+		return sqlSessionTemplate.update("updateCount", seq);
 	}
 
-	
 }

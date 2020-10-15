@@ -13,9 +13,10 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 		
 	</settings>
-	
-	<typeAliases>
+	<!-- <typeAliases>
 		<typeAlias type="board.domain.BoardVo" alias="BoardVo"/>
+	</typeAliases> -->
+	<typeAliases>
+		<package name="board"/> <!-- board패키지 하위에서 @Alias를 읽음 -->
 	</typeAliases>
-	
 </configuration>

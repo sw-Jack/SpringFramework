@@ -5,7 +5,6 @@ import java.util.List;
 import board.domain.BoardVo;
 
 public interface BoardDao {
-
 	public List<BoardVo> list();
 	
 	public int delete(BoardVo boardVo);

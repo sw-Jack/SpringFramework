@@ -12,8 +12,6 @@ public interface BoardService {
 	public int edit(BoardVo boardVo);
 	
 	public void write(BoardVo boardVo);
-
-	public BoardVo read(int cnt);
-
 	
+	public BoardVo read(int seq);
 }

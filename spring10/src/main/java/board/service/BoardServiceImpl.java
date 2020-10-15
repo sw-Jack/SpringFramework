@@ -14,14 +14,13 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardDao boardDao;
 	
-	
-	//public BoardDao getBoardDao() {
-	//	return boardDao;
-	//}
-
-	//public void setBoardDao(BoardDao boardDao) {
-	//	this.boardDao = boardDao;
-	//}
+//	public BoardDao getBoardDao() {
+//		return boardDao;
+//	}
+//
+//	public void setBoardDao(BoardDao boardDao) {
+//		this.boardDao = boardDao;
+//	}
 
 	@Override
 	public List<BoardVo> list() {
@@ -45,8 +44,8 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVo read(int seq) {
+		boardDao.updateReadCount(seq);	//조회수 증가
 		return boardDao.select(seq);
 	}
-	
-	
+
 }
